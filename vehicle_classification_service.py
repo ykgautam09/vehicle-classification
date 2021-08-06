@@ -1,17 +1,16 @@
 import numpy as np
-import os
 from tensorflow import expand_dims
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array, load_img
 from configparser import ConfigParser
 
 config = ConfigParser()
-config.read('./config.ini')
-MODEL_PATH = config['LOCAL']['MODEL_PATH']
+config.read("./config.ini")
+MODEL_PATH = config["LOCAL"]["MODEL_PATH"]
 IMAGE_SIZE = (300, 300)
 
 
-class _vehicle_classification:
+class VehicleClassification:
     _instance = None
     model = None
     _mappings = [
@@ -23,8 +22,8 @@ class _vehicle_classification:
     def process_image(self, image_path):
         """ preprocessing of a vehicle image provided by image path before prediction
 
-            :param image_path (str): path of image under prediction
-            :return img_array (ndarray): image array data
+            :param image_path (str) - path of image under prediction
+            :return img_array (ndarray) : image array data
         """
 
         img = load_img(image_path, target_size=IMAGE_SIZE)
@@ -48,16 +47,16 @@ class _vehicle_classification:
 
 
 def classification_engine(model_path=MODEL_PATH):
-    """ Factory function for _vehicle_classification class
+    """ Factory function for VehicleClassification class
 
         :param model_path (str): path of serialised model
-        :return _vehicle_classification._instance (ndarray): 
+        :return VehicleClassification._instance (ndarray):
     """
 
-    if _vehicle_classification._instance is None:
-        _vehicle_classification._instance = _vehicle_classification()
-        _vehicle_classification.model = load_model(model_path)
-    return _vehicle_classification._instance
+    if VehicleClassification._instance is None:
+        VehicleClassification._instance = VehicleClassification()
+        VehicleClassification.model = load_model(model_path)
+    return VehicleClassification._instance
 
 
 if __name__ == "__main__":

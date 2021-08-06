@@ -50,7 +50,7 @@
                                     <label for="email_address" class="col-md-4 col-form-label text-md-right">Input
                                         Vehicle Image</label>
                                     <div class="col-md-6">
-                                        <input name="vehicle" type="file" class="form-control" required autofocus
+                                        <input name="vehicle" type="file" class="form-control" autofocus
                                             placeholder="Select Vehicle Image" required>
                                     </div>
                                 </div>
@@ -68,10 +68,9 @@
         {% if size>0 %}
         <div class="container col-md-3 mt-5">
             <div class="row justify-content-center" style="background-color: azure;border-radius: 4px">
-                <ul>
+
                     <h3>Submitted Vehicle is : <span style="text-decoration: underline;">{{result}}</span>
                     </h3>
-                </ul>
             </div>
         </div>
         {% endif %}
