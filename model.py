@@ -56,6 +56,7 @@ def generate_model(output_classes=OUTPUT_CLASSES, image_size=IMAGE_SIZE):
         layers.Conv2D(64, 3, padding="same", activation="relu"),
         layers.MaxPooling2D(),
         layers.Flatten(),
+        layers.Dropout(0.1),
         layers.Dense(128, activation="relu"),
         layers.Dense(output_classes)
     ])

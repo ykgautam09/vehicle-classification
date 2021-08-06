@@ -42,7 +42,7 @@ class VehicleClassification:
 
         img_array = self.process_image(image_path)
         predictions = self.model.predict(img_array)
-        vehicle = self._mappings[np.argmax(predictions)]
+        vehicle = self._mappings[np.argmax(abs(predictions))]
         return vehicle
 
 
@@ -63,4 +63,12 @@ if __name__ == "__main__":
     vcs = classification_engine(MODEL_PATH)
     # make a prediction
     keyword = vcs.predict_class("./temp/b1.jpeg")
+    print(keyword)
+    keyword = vcs.predict_class("./temp/b2.jpeg")
+    print(keyword)
+    keyword = vcs.predict_class("./temp/b3.jpeg")
+    print(keyword)
+    keyword = vcs.predict_class("./temp/b4.jpeg")
+    print(keyword)
+    keyword = vcs.predict_class("./temp/b5.jpeg")
     print(keyword)
